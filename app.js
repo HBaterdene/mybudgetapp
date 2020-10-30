@@ -58,11 +58,14 @@ var uiController = (function(){
         return DOMstrings;
     },
     changeType: function(){
-        var fields = document.querySelectorAll(DOMstrings.inputType + ", " + DOMstrings.inputDescription + ", " + DOMstrings.inputValue);
+        var fields = document.querySelectorAll(DOMstrings.inputType + ', ' + DOMstrings.inputDescription + ', ' + DOMstrings.inputValue);
 
         nodeListForEach(fields, function(el){
-           el.classList.toggle("red-focus")
+           el.classList.toggle('red-focus');
+          el.classList.toggle('red')
         })
+
+        document.querySelector(DOMstrings.addBtn).classList.toggle('red')
     },
 
     displayPercentages: function(allPercentages) {
@@ -309,7 +312,9 @@ var setUpEventListener = function () {
             ctrlAddItem();
         }
      })
-     document.querySelector(DOM.inputType).addEventListener('change', uiController.changeType())
+     
+     document.querySelector(DOM.inputType).addEventListener('change', uiController.changeType)
+     
      document.querySelector(DOM.containerDiv).addEventListener('click', function(event){
          var id = event.target.parentNode.parentNode.parentNode.parentNode.id
         if(id){
